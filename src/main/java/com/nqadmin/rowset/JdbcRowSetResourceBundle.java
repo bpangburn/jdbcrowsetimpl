@@ -23,7 +23,12 @@
  * questions.
  */
 
-package com.sun.rowset;
+/*
+ * 2020-08-11_BP: renaming package for Maven artifact
+ * 
+ * See: https://github.com/bpangburn/jdbcrowsetimpl
+ */
+package com.nqadmin.rowset;
 
 import java.io.*;
 import java.util.*;
