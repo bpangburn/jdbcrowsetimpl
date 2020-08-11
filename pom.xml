@@ -18,7 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<version.maven>3.6.3</version.maven>
-		<version.java>1.11</version.java>
+		<version.java>1.8</version.java>
 
 		<version.maven-compiler-plugin>3.8.1</version.maven-compiler-plugin>
 		<version.maven-source-plugin>3.2.1</version.maven-source-plugin>
@@ -94,6 +94,7 @@
 						<configuration>
 							<source>${version.java}</source>
 							<target>${version.java}</target>
+							<failOnError>false</failOnError>
 						</configuration>
 						<executions>
 							<execution>

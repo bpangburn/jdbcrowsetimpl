@@ -101,8 +101,12 @@ public class JdbcRowSetResourceBundle implements Serializable {
         Locale locale = Locale.getDefault();
 
         // Load appropriate bundle according to locale
+        //propResBundle = (PropertyResourceBundle) ResourceBundle.getBundle(PATH,
+        //                   locale, JdbcRowSetResourceBundle.class.getModule());
+        // 2020-08-11_BP: reverting to Java 8 compatible code from:
+        // https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/cea72c2bf071/src/share/classes/com/sun/rowset/JdbcRowSetResourceBundle.java
         propResBundle = (PropertyResourceBundle) ResourceBundle.getBundle(PATH,
-                           locale, JdbcRowSetResourceBundle.class.getModule());
+                locale, Thread.currentThread().getContextClassLoader());
    }
 
     /**
