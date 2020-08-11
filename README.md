@@ -1,5 +1,5 @@
 # jdbcrowsetimpl
-The standard implementation of the JdbcRowSet interface from OpenJDK that does not require RowSetFactory.
+The standard implementation of the JdbcRowSet interface from OpenJDK, which does not require RowSetFactory.
 
 In Java 7, the RowSetFactory Interface was introduced as the preferred way to create JdbcRowSet objects:
 https://docs.oracle.com/javase/tutorial/jdbc/basics/jdbcrowset.html
@@ -18,19 +18,19 @@ setConnection(), we're creating this jdbcrowsetimpl Maven artifact.
 
 It is based on the latest OpenJDK 14 code available from: https://hg.openjdk.java.net/jdk/jdk14
 
-JdbcRowSetImpl.java
-JdbcRowSetResourceBundle.java
-RowSetResourceBundle_de.properties
-RowSetResourceBundle_es.properties
-RowSetResourceBundle_fr.properties
-RowSetResourceBundle_it.properties
-RowSetResourceBundle_ja.properties
-RowSetResourceBundle_ko.properties
-RowSetResourceBundle_pt_BR.properties
-RowSetResourceBundle_sv.properties
-RowSetResourceBundle_zh_CN.properties
-RowSetResourceBundle_zh_TW.properties
-RowSetResourceBundle.properties
+  1. JdbcRowSetImpl.java
+  2. JdbcRowSetResourceBundle.java
+  3. RowSetResourceBundle_de.properties
+  4. RowSetResourceBundle_es.properties
+  5. RowSetResourceBundle_fr.properties
+  6. RowSetResourceBundle_it.properties
+  7. RowSetResourceBundle_ja.properties
+  8. RowSetResourceBundle_ko.properties
+  9. RowSetResourceBundle_pt_BR.properties
+ 10. RowSetResourceBundle_sv.properties
+ 11. RowSetResourceBundle_zh_CN.properties
+ 12. RowSetResourceBundle_zh_TW.properties
+ 13. RowSetResourceBundle.properties
 
 The constructor for JdbcRowSetResourceBundle is modified around line 100 based on the Java 8 version of the file:
 https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/com/sun/rowset/JdbcRowSetResourceBundle.java
