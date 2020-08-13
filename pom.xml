@@ -33,6 +33,21 @@
 			<url>https://spdx.org/licenses/GPL-2.0-with-classpath-exception.html</url>
 		</license>
 	</licenses>
+	
+	<developers>
+		<developer>
+			<name>Brian E. Pangburn</name>
+			<email>swingset@pangburngroup.com</email>
+			<organization>The Pangburn Group, Inc.</organization>
+			<organizationUrl>https://pangburngroup.com</organizationUrl>
+		</developer>
+				<developer>
+			<name>Prasanth R. Pasala</name>
+			<email>swingset@pangburngroup.com</email>
+			<organization>The Pangburn Group, Inc.</organization>
+			<organizationUrl>https://pangburngroup.com</organizationUrl>
+		</developer>
+	</developers>
 
 	<scm>
 		<connection>scm:git:git@github.com:bpangburn/jdbcrowsetimpl.git</connection>
