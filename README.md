@@ -1,5 +1,5 @@
 # jdbcrowsetimpl
-The standard implementation of the JdbcRowSet interface from OpenJDK, which does not require RowSetFactory.
+The standard implementation of the JdbcRowSet interface from OpenJDK, which does not require use of RowSetFactory.
 
 In Java 7, the RowSetFactory Interface was introduced as the preferred way to create JdbcRowSet objects:
 https://docs.oracle.com/javase/tutorial/jdbc/basics/jdbcrowset.html
