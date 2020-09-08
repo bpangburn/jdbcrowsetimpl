@@ -84,7 +84,7 @@ public class JdbcRowSetResourceBundle implements Serializable {
      * The variable where the default resource bundle will
      * be placed.
      **/
-    private static final String PATH = "com/sun/rowset/RowSetResourceBundle";
+    private static final String PATH = "com/nqadmin/rowset/RowSetResourceBundle";
 
     /**
      * The constructor which initializes the resource bundle.
