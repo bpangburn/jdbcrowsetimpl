@@ -47,6 +47,15 @@ Is replaced with:
 ```
 This allows the code to continue to work with Java 8.
 
+In addition the path specified in JdbcRowSetResourceBundle.java needs to be updated near line 87 from:
+```
+	private static final String PATH = "com/sun/rowset/RowSetResourceBundle";
+```
+to:
+```
+    private static final String PATH = "com/nqadmin/rowset/RowSetResourceBundle";
+```
+
 We plan to periodically monitor the OpenJDK source for these files and update this artifact as required.
 
 OpenJDK 14 rowset source: https://hg.openjdk.java.net/jdk/jdk14/file/6c954123ee8d/src/java.sql.rowset/share/classes/com/sun/rowset
