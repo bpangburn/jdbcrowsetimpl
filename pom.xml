@@ -6,7 +6,7 @@
 
 	<groupId>com.nqadmin.rowset</groupId>
 	<artifactId>jdbcrowsetimpl</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<packaging>jar</packaging>
 
 
@@ -109,6 +109,7 @@
 						<configuration>
 							<source>${version.java}</source>
 							<target>${version.java}</target>
+							<additionalJOption>-Xdoclint:none</additionalJOption>
 							<failOnError>false</failOnError>
 						</configuration>
 						<executions>
