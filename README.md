@@ -58,8 +58,15 @@ to:
 
 We plan to periodically monitor the OpenJDK source for these files and update this artifact as required.
 
-OpenJDK 14 rowset source: https://hg.openjdk.java.net/jdk/jdk14/file/6c954123ee8d/src/java.sql.rowset/share/classes/com/sun/rowset
-OpenJDK 14 rowset source zip: https://hg.openjdk.java.net/jdk/jdk14/archive/6c954123ee8d.zip/src/java.sql.rowset/share/classes/com/sun/rowset/
+OpenJDK 14 rowset source:
+https://hg.openjdk.java.net/jdk/jdk14/file/6c954123ee8d/src/java.sql.rowset/share/classes/com/sun/rowset
+OpenJDK 14 rowset source zip:
+https://hg.openjdk.java.net/jdk/jdk14/archive/6c954123ee8d.zip/src/java.sql.rowset/share/classes/com/sun/rowset/
+
+***2020-12-11: These files do not appear to have any changes for OpenJDK 15:***
+https://hg.openjdk.java.net/jdk/jdk15/file/tip/src/java.sql.rowset/share/classes/com/sun/rowset/
+https://hg.openjdk.java.net/jdk/jdk15/log/0dabbdfd97e6/src/java.sql.rowset/share/classes/com/sun/rowset/JdbcRowSetImpl.java
+https://hg.openjdk.java.net/jdk/jdk15/log/0dabbdfd97e6/src/java.sql.rowset/share/classes/com/sun/rowset/JdbcRowSetResourceBundle.java
 
 This code is released under the GNU General Public License, version 2,with the Classpath Exception:
 https://openjdk.java.net/legal/gplv2+ce.html
