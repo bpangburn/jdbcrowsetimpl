@@ -51,8 +51,8 @@
 	</developers>
 
 	<scm>
+		<url>https://github.com/bpangburn/jdbcrowsetimpl</url>
 		<connection>scm:git:git@github.com:bpangburn/jdbcrowsetimpl.git</connection>
-		<url>scm:git:git@github.com:bpangburn/jdbcrowsetimpl.git</url>
 		<developerConnection>scm:git:git@github.com:bpangburn/jdbcrowsetimpl.git</developerConnection>
 	</scm>
 
