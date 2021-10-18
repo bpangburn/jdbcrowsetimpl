@@ -33,7 +33,7 @@ It is based on the latest OpenJDK 17 code available from: https://github.com/ope
  13. RowSetResourceBundle.properties
 
 The constructor for JdbcRowSetResourceBundle is modified around line 105 based on the Java 8 version of the file:
-https://github.com/openjdk/jdk/blob/master/src/java.sql.rowset/share/classes/com/sun/rowset/JdbcRowSetResourceBundle.java
+https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/com/sun/rowset/JdbcRowSetResourceBundle.java
 ```
         // Load appropriate bundle according to locale
         propResBundle = (PropertyResourceBundle) ResourceBundle.getBundle(PATH,
@@ -49,7 +49,7 @@ This allows the code to continue to work with Java 8.
 
 In addition the path specified in JdbcRowSetResourceBundle.java needs to be updated near line 83 from:
 ```
-	private static final String PATH = "com/sun/rowset/RowSetResourceBundle";
+    private static final String PATH = "com/sun/rowset/RowSetResourceBundle";
 ```
 to:
 ```
