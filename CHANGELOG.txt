@@ -1,0 +1,42 @@
+==============================================================================
+ChangeLog file for the JdbcRowSet interface from OpenJDK
+==============================================================================
+
+==============================================================================
+JdbcRowSetImpl 1.0.3 - Released 2021-10-18
+==============================================================================
+
+Changes:
+	1. Added CHANGELOG
+	2. Updated dependency/plugin versions in POM
+	3. Changes based on 2021-09-27 version of JdbcRowSetImpl from:
+	     https://github.com/openjdk/jdk/blob/426bcee9274bb3ec7dce551f85adb2ab61c22481/src/java.sql.rowset/share/classes/com/sun/rowset/JdbcRowSetImpl.java
+	     a. Replace use of string.equals("") with isEmpty() (2018-12-07)
+	     b. Various Typos in SQL Method Documentation (2019-01-03)
+	     c. Added '@SuppressWarnings("serial")' to various datamembers (2021-09-27)
+
+==============================================================================
+JdbcRowSetImpl 1.0.2 - Released 2020-09-20
+==============================================================================
+
+Changes:
+	1. Fixed PATH constant in RowSetResourceBundle
+	2. Moved ResourceBundles into src/main/resources
+
+	
+==============================================================================
+JdbcRowSetImpl 1.0.1 - Released 2020-08-14
+==============================================================================
+
+Changes:
+	1. Updated project description
+	2. Corrected bad URL in POM
+	
+	
+==============================================================================
+JdbcRowSetImpl 1.0.0 - Released 2020-08-13
+==============================================================================
+
+Changes:
+	1. Initial Release
+	
