@@ -16,7 +16,7 @@ https://stackoverflow.com/questions/48129475/java-error-package-com-sun-rowset-i
 For backwards compatibility and to allow for the continued leverage of connection reuse with
 setConnection(), we're creating this jdbcrowsetimpl Maven artifact.
 
-It is based on the latest OpenJDK 14 code available from: https://hg.openjdk.java.net/jdk/jdk14
+It is based on the latest OpenJDK 17 code available from: https://github.com/openjdk/jdk
 
   1. JdbcRowSetImpl.java
   2. JdbcRowSetResourceBundle.java
@@ -32,7 +32,7 @@ It is based on the latest OpenJDK 14 code available from: https://hg.openjdk.jav
  12. RowSetResourceBundle_zh_TW.properties
  13. RowSetResourceBundle.properties
 
-The constructor for JdbcRowSetResourceBundle is modified around line 100 based on the Java 8 version of the file:
+The constructor for JdbcRowSetResourceBundle is modified around line 105 based on the Java 8 version of the file:
 https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/com/sun/rowset/JdbcRowSetResourceBundle.java
 ```
         // Load appropriate bundle according to locale
@@ -47,9 +47,9 @@ Is replaced with:
 ```
 This allows the code to continue to work with Java 8.
 
-In addition the path specified in JdbcRowSetResourceBundle.java needs to be updated near line 87 from:
+In addition the path specified in JdbcRowSetResourceBundle.java needs to be updated near line 83 from:
 ```
-	private static final String PATH = "com/sun/rowset/RowSetResourceBundle";
+    private static final String PATH = "com/sun/rowset/RowSetResourceBundle";
 ```
 to:
 ```
@@ -58,15 +58,8 @@ to:
 
 We plan to periodically monitor the OpenJDK source for these files and update this artifact as required.
 
-OpenJDK 14 rowset source:
-https://hg.openjdk.java.net/jdk/jdk14/file/6c954123ee8d/src/java.sql.rowset/share/classes/com/sun/rowset
-OpenJDK 14 rowset source zip:
-https://hg.openjdk.java.net/jdk/jdk14/archive/6c954123ee8d.zip/src/java.sql.rowset/share/classes/com/sun/rowset/
+OpenJDK 17 rowset source:
+https://github.com/openjdk/jdk/tree/master/src/java.sql.rowset/share/classes/com/sun/rowset
 
-***2020-12-11: These files do not appear to have any changes for OpenJDK 15:***
-https://hg.openjdk.java.net/jdk/jdk15/file/tip/src/java.sql.rowset/share/classes/com/sun/rowset/
-https://hg.openjdk.java.net/jdk/jdk15/log/0dabbdfd97e6/src/java.sql.rowset/share/classes/com/sun/rowset/JdbcRowSetImpl.java
-https://hg.openjdk.java.net/jdk/jdk15/log/0dabbdfd97e6/src/java.sql.rowset/share/classes/com/sun/rowset/JdbcRowSetResourceBundle.java
-
-This code is released under the GNU General Public License, version 2,with the Classpath Exception:
-https://openjdk.java.net/legal/gplv2+ce.html
+This code is released under the GNU General Public License, version 2, with the Classpath Exception:
+https://github.com/openjdk/jdk/blob/72a976ef05fc2c62657920a560a0abc60b27c852/LICENSE
