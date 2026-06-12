@@ -132,9 +132,9 @@
 					    <ossIndexServerId>sonatype-guide</ossIndexServerId>
 					    <ossIndexAnalyzerUrl>https://api.guide.sonatype.com</ossIndexAnalyzerUrl>
 					    <!--
-						<nvdApiServerId>nvd</nvdApiServerId>
 						<ossIndexServerId>ossindex</ossIndexServerId>
 						-->
+						<nvdApiServerId>nvd</nvdApiServerId>
 					</configuration>
                 </plugin>
                 <plugin>
