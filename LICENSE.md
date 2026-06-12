@@ -1,8 +1,20 @@
+# License
+
+This project is licensed under the GNU General Public License, version 2, with the Classpath Exception.
+
+SPDX-License-Identifier: `GPL-2.0-with-classpath-exception`
+
+OpenJDK source reference: <https://github.com/openjdk/jdk25u/blob/jdk-25.0.1-ga/LICENSE>
+
+Classpath Exception reference: <https://openjdk.org/legal/gplv2+ce.html>
+
+## GNU General Public License, Version 2
+
                     GNU GENERAL PUBLIC LICENSE
                        Version 2, June 1991
 
  Copyright (C) 1989, 1991 Free Software Foundation, Inc.,
- 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ <https://fsf.org/>
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
@@ -304,8 +316,7 @@ the "copyright" line and a pointer to where the full notice is found.
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License along
-    with this program; if not, write to the Free Software Foundation, Inc.,
-    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+    with this program; if not, see <https://www.gnu.org/licenses/>.
 
 Also add information on how to contact you by electronic and paper mail.
 
@@ -329,8 +340,8 @@ necessary.  Here is a sample; alter the names:
   Yoyodyne, Inc., hereby disclaims all copyright interest in the program
   `Gnomovision' (which makes passes at compilers) written by James Hacker.
 
-  <signature of Ty Coon>, 1 April 1989
-  Ty Coon, President of Vice
+  <signature of Moe Ghoul>, 1 April 1989
+  Moe Ghoul, President of Vice
 
 This General Public License does not permit incorporating your program into
 proprietary programs.  If your program is a subroutine library, you may
@@ -338,27 +349,16 @@ consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.
 
-"CLASSPATH" EXCEPTION TO THE GPL
+## "Classpath" Exception to the GPL
 
-Certain source files distributed by Oracle America and/or its affiliates are
-subject to the following clarification and special exception to the GPL, but
-only where Oracle has expressly included in the particular source file's header
-the words "Oracle designates this particular file as subject to the "Classpath"
-exception as provided by Oracle in the LICENSE file that accompanied this code."
+Certain source files distributed by Oracle America and/or its affiliates are subject to the following clarification and special exception to the GPL, but only where Oracle has expressly included in the particular source file's header the words "Oracle designates this particular file as subject to the \"Classpath\" exception as provided by Oracle in the LICENSE file that accompanied this code."
 
-    Linking this library statically or dynamically with other modules is making
-    a combined work based on this library.  Thus, the terms and conditions of
-    the GNU General Public License cover the whole combination.
+Linking this library statically or dynamically with other modules is making a combined work based on this library. Thus, the terms and conditions of the GNU General Public License cover the whole combination.
 
-    As a special exception, the copyright holders of this library give you
-    permission to link this library with independent modules to produce an
-    executable, regardless of the license terms of these independent modules,
-    and to copy and distribute the resulting executable under terms of your
-    choice, provided that you also meet, for each linked independent module,
-    the terms and conditions of the license of that module.  An independent
-    module is a module which is not derived from or based on this library.  If
-    you modify this library, you may extend this exception to your version of
-    the library, but you are not obligated to do so.  If you do not wish to do
-    so, delete this exception statement from your version.
-    
-https://openjdk.java.net/legal/gplv2+ce.html
+As a special exception, the copyright holders of this library give you permission to link this library with independent modules to produce an executable, regardless of the license terms of these independent modules, and to copy and distribute the resulting executable under terms of your choice, provided that you also meet, for each linked independent module, the terms and conditions of the license of that module.
+
+An independent module is a module which is not derived from or based on this library.
+
+If you modify this library, you may extend this exception to your version of the library, but you are not obligated to do so. If you do not wish to do so, delete this exception statement from your version.
+
+<https://openjdk.org/legal/gplv2+ce.html>

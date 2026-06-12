@@ -1,16 +1,16 @@
 /*
- * Copyright (c) 2005, 2011, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2005, 2022, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Oracle designates this
+ * published by the Free Software Foundation. Oracle designates this
  * particular file as subject to the "Classpath" exception as provided
  * by Oracle in the LICENSE file that accompanied this code.
  *
  * This code is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
  * version 2 for more details (a copy is included in the LICENSE file that
  * accompanied this code).
  *
@@ -24,14 +24,17 @@
  */
 
 /*
- * 2020-08-11_BP: renaming package for Maven artifact
- * 
- * See: https://github.com/bpangburn/jdbcrowsetimpl
+ * Repackaged from OpenJDK jdk-25.0.1-ga com.sun.rowset to
+ * com.nqadmin.rowset, with Java 8-compatible ResourceBundle loading.
  */
 package com.nqadmin.rowset;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.Enumeration;
+import java.util.Locale;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
 
 /**
  * This class is used to help in localization of resources,
@@ -40,51 +43,48 @@ import java.util.*;
  * @author Amit Handa
  */
 public class JdbcRowSetResourceBundle implements Serializable {
-
     /**
-     * This <code>String</code> variable stores the location
+     * This {@code String} variable stores the location
      * of the resource bundle location.
      */
     private static String fileName;
 
     /**
-     * This variable will hold the <code>PropertyResourceBundle</code>
+     * This variable will hold the {@code PropertyResourceBundle}
      * of the text to be internationalized.
      */
     private transient PropertyResourceBundle propResBundle;
 
     /**
-     * The constructor initializes to this object
-     *
+     * The constructor initializes to this object.
      */
     private static volatile JdbcRowSetResourceBundle jpResBundle;
 
     /**
      * The variable which will represent the properties
      * the suffix or extension of the resource bundle.
-     **/
+     */
     private static final String PROPERTIES = "properties";
 
     /**
-     * The variable to represent underscore
-     **/
+     * The variable to represent underscore.
+     */
     private static final String UNDERSCORE = "_";
 
     /**
-     * The variable which will represent dot
-     **/
+     * The variable which will represent dot.
+     */
     private static final String DOT = ".";
 
     /**
      * The variable which will represent the slash.
-     **/
+     */
     private static final String SLASH = "/";
 
     /**
-     * The variable where the default resource bundle will
-     * be placed.
-     **/
-    private static final String PATH = "com/nqadmin/rowset/RowSetResourceBundle";
+     * The variable where the default resource bundle will be placed.
+     */
+    private static final String PATH = "com.nqadmin.rowset.RowSetResourceBundle";
 
     /**
      * The constructor which initializes the resource bundle.
@@ -94,70 +94,63 @@ public class JdbcRowSetResourceBundle implements Serializable {
      * @throws IOException if unable to load the ResourceBundle
      * according to locale or the default one.
      */
-    private JdbcRowSetResourceBundle () throws IOException {
-        // Try to load the resource bundle according
-        // to the locale. Else if no bundle found according
-        // to the locale load the default.
-
-        // In default case the default locale resource bundle
-        // should always be loaded else it
-        // will be difficult to throw appropriate
-        // exception string messages.
+    private JdbcRowSetResourceBundle() throws IOException {
+        // Try to load the resource bundle according to the locale. Else if no
+        // bundle found according to the locale load the default. In default
+        // case the default locale resource bundle should always be loaded else
+        // it will be difficult to throw appropriate exception string messages.
         Locale locale = Locale.getDefault();
 
-        // Load appropriate bundle according to locale
-        //propResBundle = (PropertyResourceBundle) ResourceBundle.getBundle(PATH,
-        //                   locale, JdbcRowSetResourceBundle.class.getModule());
-        // 2020-08-11_BP: reverting to Java 8 compatible code from:
-        // https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/cea72c2bf071/src/share/classes/com/sun/rowset/JdbcRowSetResourceBundle.java
-        propResBundle = (PropertyResourceBundle) ResourceBundle.getBundle(PATH,
-                locale, Thread.currentThread().getContextClassLoader());
-   }
-
-    /**
-     * This method is used to get a handle to the
-     * initialized instance of this class. Note that
-     * at any time there is only one instance of this
-     * class initialized which will be returned.
-     *
-     * @throws IOException if unable to find the RowSetResourceBundle.properties
-     */
-    public static JdbcRowSetResourceBundle getJdbcRowSetResourceBundle()
-    throws IOException {
-
-         if(jpResBundle == null){
-             synchronized(JdbcRowSetResourceBundle.class) {
-                if(jpResBundle == null){
-                    jpResBundle = new JdbcRowSetResourceBundle();
-                } //end if
-             } //end synchronized block
-         } //end if
-         return jpResBundle;
+        // Load appropriate bundle according to locale. OpenJDK jdk-25.0.1-ga
+        // uses JdbcRowSetResourceBundle.class.getModule(), which is not
+        // available on Java 8, so this artifact uses the context class loader.
+        propResBundle = (PropertyResourceBundle) ResourceBundle.getBundle(
+                PATH,
+                locale,
+                Thread.currentThread().getContextClassLoader());
     }
 
     /**
-     * This method returns an enumerated handle of the keys
-     * which correspond to values translated to various locales.
+     * This method is used to get a handle to the initialized instance of this
+     * class. Note that at any time there is only one instance of this class
+     * initialized which will be returned.
      *
-     * @return an enumeration of keys which have messages tranlated to
+     * @return the shared resource bundle instance
+     * @throws IOException if unable to find the RowSetResourceBundle.properties
+     */
+    public static JdbcRowSetResourceBundle getJdbcRowSetResourceBundle()
+            throws IOException {
+        if (jpResBundle == null) {
+            synchronized (JdbcRowSetResourceBundle.class) {
+                if (jpResBundle == null) {
+                    jpResBundle = new JdbcRowSetResourceBundle();
+                } // end if
+            } // end synchronized block
+        } // end if
+        return jpResBundle;
+    }
+
+    /**
+     * This method returns an enumerated handle of the keys which correspond to
+     * values translated to various locales.
+     *
+     * @return an enumeration of keys which have messages translated to
      * corresponding locales.
      */
     @SuppressWarnings("rawtypes")
     public Enumeration getKeys() {
-       return propResBundle.getKeys();
+        return propResBundle.getKeys();
     }
 
-
     /**
-     * This method takes the key as an argument and
-     * returns the corresponding value reading it
-     * from the Resource Bundle loaded earlier.
+     * This method takes the key as an argument and returns the corresponding
+     * value reading it from the Resource Bundle loaded earlier.
      *
-     * @return value in locale specific language
-     * according to the key passed.
+     * @param key the resource bundle key
+     * @return value in locale specific language according to the key passed.
      */
     public Object handleGetObject(String key) {
-       return propResBundle.handleGetObject(key);
+        return propResBundle.handleGetObject(key);
     }
 
     static final long serialVersionUID = 436199386225359954L;
