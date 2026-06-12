@@ -4,6 +4,10 @@ This file summarizes AI-assisted release review notes for `jdbcrowsetimpl`. It i
 
 The entries below are organized in descending chronological order. They combine the human release history with AI review of repository tags, branch commits, selected diffs, source files, resource files, and Maven build configuration. Because this artifact is derived from OpenJDK rowset source, the notes distinguish between upstream OpenJDK synchronization, project-specific package/resource adaptations, and build/release metadata changes.
 
+## JdbcRowSetImpl 1.0.5 - Released TBD
+
+### TODO
+
 ## JdbcRowSetImpl 1.0.4 - Released 2026-06-12
 
 ### OpenJDK source basis

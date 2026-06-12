@@ -2,6 +2,12 @@
 
 All notable changes to `jdbcrowsetimpl` are documented here.
 
+## JdbcRowSetImpl 1.0.5 - Released TBD
+
+### Changed
+
+- Stuff goes here...
+
 ## JdbcRowSetImpl 1.0.4 - Released 2026-06-12
 
 ### Changed
