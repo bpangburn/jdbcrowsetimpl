@@ -1,1 +1,9 @@
-/target/
+# Maven, Eclipse, and local artifacts (modules included)
+target/
+bin/
+.classpath
+.project
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.m2e.core.prefs
+*.log
+hs_err_pid*
