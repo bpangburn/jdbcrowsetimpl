@@ -1,0 +1,104 @@
+name: OWASP Dependency-Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Thursday, 10:43 UTC; staggered across repositories.
+    - cron: '43 10 * * 4'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: owasp-dependency-check-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  dependency-check:
+    name: Scan Maven dependencies
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      # Run the OWASP Maven plugin on JDK 21; project bytecode remains Java 8.
+      - name: Set up Java
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Install Maven 3.9.16
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=3.9.16
+          base="https://downloads.apache.org/maven/maven-3/${version}/binaries"
+          archive="$RUNNER_TEMP/apache-maven-${version}-bin.tar.gz"
+          curl --fail --silent --show-error --location "${base}/apache-maven-${version}-bin.tar.gz" -o "$archive"
+          curl --fail --silent --show-error --location "${base}/apache-maven-${version}-bin.tar.gz.sha512" -o "$archive.sha512"
+          expected="$(tr -d '[:space:]' < "$archive.sha512")"
+          echo "$expected  $archive" | sha512sum --check --status
+          tar -xzf "$archive" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/apache-maven-${version}/bin" >> "$GITHUB_PATH"
+
+      - name: Verify Maven version
+        run: mvn --version
+
+      - name: Restore vulnerability database cache
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/owasp-dependency-check
+          key: owasp-nvd-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            owasp-nvd-${{ runner.os }}-
+
+      - name: Scan Maven dependencies
+        shell: bash
+        env:
+          # Optional Actions secret. Pass it through the environment, not
+          # Maven command-line arguments, to keep the value out of logs.
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: |
+          set -euo pipefail
+          nvd_options=()
+          if [[ -n "${NVD_API_KEY:-}" ]]; then
+            echo "Using the NVD API with a configured repository secret"
+            nvd_options+=("-DnvdApiKeyEnvironmentVariable=NVD_API_KEY")
+          else
+            # OWASP's own mirror avoids the NVD API's empty-key/rate-limit
+            # failures. It is refreshed daily on a best-effort basis.
+            echo "::notice::NVD_API_KEY is unset; using OWASP's NVD data-feed mirror"
+            nvd_options+=("-DnvdDatafeedUrl=https://dependency-check.github.io/DependencyCheck_Builder/nvd_cache/nvdcve-{0}.json.gz")
+          fi
+
+          mvn -B -ntp -Powasp-check \
+            -DskipTests \
+            -DfailBuildOnCVSS=11 \
+            -Dowasp.failBuildOnCVSS=11 \
+            -DfailOnError=true \
+            -Dformats=HTML,JSON \
+            -DossIndexAnalyzerEnabled=false \
+            -DdataDirectory="$HOME/.cache/owasp-dependency-check" \
+            "${nvd_options[@]}" \
+            verify
+
+      - name: Upload vulnerability reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: owasp-dependency-check-report
+          path: |
+            **/target/dependency-check-report.html
+            **/target/dependency-check-report.json
+          if-no-files-found: warn
+          retention-days: 30
+
+# The scan activates the existing -Powasp-check Maven profile. HTML and JSON
+# reports upload even if a scan encounters an error or reports vulnerabilities.
+# CI uses a report-only CVSS threshold (11 > maximum 10); data/update errors
+# still fail the job. An optional NVD_API_KEY repository secret uses NVD directly,
+# otherwise OWASP's best-effort public mirror supplies the vulnerability data.
