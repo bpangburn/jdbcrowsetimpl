@@ -137,11 +137,6 @@
                     <version>${version.maven-enforcer-plugin}</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${version.maven-compiler-plugin}</version>
-                </plugin>
-                <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
                     <version>${version.dependency-check-maven}</version>
@@ -204,14 +199,18 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <release>${version.java.release}</release>
-                    <showWarnings>true</showWarnings>
-                </configuration>
-            </plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			    <version>${version.maven-compiler-plugin}</version>
+			    <configuration>
+			        <release>${version.java.release}</release>
+			        <showWarnings>true</showWarnings>
+			        <compilerArgs>
+			            <arg>-Xlint:-options</arg>
+			        </compilerArgs>
+			    </configuration>
+			</plugin>
         </plugins>
     </build>
 
