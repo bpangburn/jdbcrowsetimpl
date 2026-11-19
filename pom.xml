@@ -58,6 +58,8 @@
         <version.maven-enforcer-plugin>3.7.0</version.maven-enforcer-plugin>
         <version.maven-compiler-plugin>3.16.0</version.maven-compiler-plugin>
         <version.dependency-check-maven>13.0.0</version.dependency-check-maven>
+        <!-- Local scans retain CVSS 7; CI can request report-only mode. -->
+        <owasp.failBuildOnCVSS>7.0</owasp.failBuildOnCVSS>
         <version.maven-source-plugin>3.4.0</version.maven-source-plugin>
         <version.maven-javadoc-plugin>3.12.0</version.maven-javadoc-plugin>
         <version.maven-gpg-plugin>3.2.8</version.maven-gpg-plugin>
@@ -128,13 +130,8 @@
                     <artifactId>dependency-check-maven</artifactId>
                     <version>${version.dependency-check-maven}</version>
                     <configuration>
-                        <failBuildOnCVSS>7.0</failBuildOnCVSS>
-					    <ossIndexServerId>sonatype-guide</ossIndexServerId>
-					    <ossIndexAnalyzerUrl>https://api.guide.sonatype.com</ossIndexAnalyzerUrl>
-					    <!--
-						<nvdApiServerId>nvd</nvdApiServerId>
-						<ossIndexServerId>ossindex</ossIndexServerId>
-						-->
+                        <failBuildOnCVSS>${owasp.failBuildOnCVSS}</failBuildOnCVSS>
+
 					</configuration>
                 </plugin>
                 <plugin>
@@ -235,7 +232,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <failBuildOnCVSS>7.0</failBuildOnCVSS>
+                            <failBuildOnCVSS>${owasp.failBuildOnCVSS}</failBuildOnCVSS>
                         </configuration>
                     </plugin>
                 </plugins>
