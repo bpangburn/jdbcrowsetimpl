@@ -125,3 +125,13 @@ This code is released under the GNU General Public License, version 2, with the 
 - <https://github.com/openjdk/jdk25u/blob/jdk-25.0.1-ga/LICENSE>
 
 See [LICENSE.md](LICENSE.md) for the full license text.
+
+## Regression tests
+
+Run `mvn -B -ntp clean verify` to execute a small JUnit 5 integration suite
+against an embedded, in-memory H2 database. Tests cover scrolling through
+rows, parameterized queries, and basic update/insert/delete behavior.
+H2 is a **test-scoped** dependency only; the published library does not
+include or require H2. The 2.2.x test version is deliberate to retain the
+existing Java 8/11/21/25 CI matrix. Runtime behavior with other JDBC drivers
+and database-specific types still requires separate verification.
