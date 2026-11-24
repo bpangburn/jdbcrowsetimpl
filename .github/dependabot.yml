@@ -6,6 +6,10 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # Preserve older-JDK test compatibility; JUnit 6 requires Java 17+.
+      - dependency-name: "org.junit.jupiter:junit-jupiter"
+        update-types: ["version-update:semver-major"]
     groups:
       routine-maven-plugins:
         applies-to: version-updates
