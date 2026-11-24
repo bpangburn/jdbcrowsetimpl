@@ -55,6 +55,8 @@
         <version.java.minimum>[1.8,)</version.java.minimum>
         <version.owasp.java.minimum>[11,)</version.owasp.java.minimum>
 
+        <h2.version>2.5.252</h2.version>
+
         <version.maven-enforcer-plugin>3.7.0</version.maven-enforcer-plugin>
         <version.maven-compiler-plugin>3.16.0</version.maven-compiler-plugin>
         <version.dependency-check-maven>13.0.0</version.dependency-check-maven>
@@ -112,7 +114,7 @@
         </snapshotRepository>
     </distributionManagement>
 
-    <!-- Test-only dependencies; H2 2.2.x keeps the Java 8 CI matrix working. -->
+    <!-- Test-only dependencies; the java8-testing profile selects a compatible H2. -->
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -123,7 +125,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>2.2.224</version>
+            <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -215,6 +217,18 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>java8-testing</id>
+            <activation>
+                <jdk>[1.8,11)</jdk>
+            </activation>
+            <properties>
+                <!-- H2 2.2.224 is the last Java 8-compatible release.
+                     Reassess this test-only pin if material vulnerabilities emerge. -->
+                <h2.version>2.2.224</h2.version>
+            </properties>
+        </profile>
+
         <profile>
             <id>owasp-check</id>
             <build>
