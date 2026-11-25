@@ -109,6 +109,9 @@ To run OWASP Dependency-Check:
 mvn -Powasp-check verify
 ```
 
+For local Maven settings with an NVD API key stored under server ID `nvd`,
+use `mvn -Powasp-check -DnvdApiServerId=nvd verify`.
+
 To prepare release artifacts with sources, Javadocs, signatures, and Central Portal publishing support:
 
 ```bash
@@ -132,6 +135,6 @@ Run `mvn -B -ntp clean verify` to execute a small JUnit 5 integration suite
 against an embedded, in-memory H2 database. Tests cover scrolling through
 rows, parameterized queries, and basic update/insert/delete behavior.
 H2 is a **test-scoped** dependency only; the published library does not
-include or require H2. The 2.2.x test version is deliberate to retain the
-existing Java 8/11/21/25 CI matrix. Runtime behavior with other JDBC drivers
+include or require H2. H2 2.5.252 is used by default on Java 11+; the Java 8–10 profile
+selects H2 2.2.224 to retain the existing Java 8/11/21/25 CI matrix. Runtime behavior with other JDBC drivers
 and database-specific types still requires separate verification.

@@ -2,6 +2,15 @@
 
 All notable changes to `jdbcrowsetimpl` are documented here.
 
+## JdbcRowSetImpl 1.0.5 - Released TBD
+
+### Changed
+
+- Updated Maven plugins, security workflows and IDE configuration.
+- Added JUnit 5 integration tests for rowset operations using test-scoped H2.
+- Use H2 2.5.252 on Java 11+ and H2 2.2.224 on Java 8–10; retain Java 8 artifact compatibility.
+- Retained the Java 8/11/21/25 Maven CI matrix.
+
 ## JdbcRowSetImpl 1.0.4 - Released 2026-06-12
 
 ### Changed

@@ -4,6 +4,15 @@ This file summarizes AI-assisted release review notes for `jdbcrowsetimpl`. It i
 
 The entries below are organized in descending chronological order. They combine the human release history with AI review of repository tags, branch commits, selected diffs, source files, resource files, and Maven build configuration. Because this artifact is derived from OpenJDK rowset source, the notes distinguish between upstream OpenJDK synchronization, project-specific package/resource adaptations, and build/release metadata changes.
 
+## JdbcRowSetImpl 1.0.5 - Released TBD
+
+### Snapshot synchronization (2026-11-25)
+
+- Rebuild from the maintained master branch; preserve recent Maven, CI, dependency, regression-test and IDE cleanup changes.
+- No snapshot-specific Java source changes were identified. Upstream OpenJDK source refresh remains a separate release-preparation task.
+- Retain Java 8 compatibility and the JDK-specific H2 test dependency selection. H2 is not a runtime dependency.
+- Keep the maintained OWASP configuration rather than restoring the legacy hard-coded NVD server ID. Local users with a Maven settings server named `nvd` can opt in using `-DnvdApiServerId=nvd`.
+
 ## JdbcRowSetImpl 1.0.4 - Released 2026-06-12
 
 ### OpenJDK source basis
