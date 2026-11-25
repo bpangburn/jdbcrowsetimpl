@@ -3,7 +3,6 @@ target/
 bin/
 .classpath
 .project
-.settings/org.eclipse.core.resources.prefs
-.settings/org.eclipse.m2e.core.prefs
+.settings/
 *.log
 hs_err_pid*
